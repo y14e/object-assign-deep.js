@@ -1,2 +1,2 @@
 # object-asign-deep.js
-JS snippet for a deep `Object.assign()`.
+JS snippet for deep `Object.assign()`.
