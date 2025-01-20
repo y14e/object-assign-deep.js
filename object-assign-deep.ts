@@ -1,4 +1,4 @@
-function objectAssignDeep(target: {}, ...sources: any[]) {
+function objectAssignDeep<T extends {}>(target: T, ...sources: any[]): T {
   for (const source of sources) {
     for (const [key, value] of Object.entries(source || {})) {
       target[key] = value && typeof value === 'object' && !Array.isArray(value) ? objectAssignDeep(structuredClone(target[key] || {}) as Record<string, any>, value) : structuredClone(value);
