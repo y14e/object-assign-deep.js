@@ -1,10 +1,10 @@
-function objectAssignDeep<T extends Record<string, any>, U>(target: T, ...sources: U[]): T & U {
+function objectAssignDeep<T extends {}>(target: T, ...sources: any[]): T {
   for (const source of sources) {
     for (const [key, value] of Object.entries(source || {})) {
-      (target as Record<string, any>)[key] = value && typeof value === 'object' && !Array.isArray(value) ? objectAssignDeep(structuredClone(target[key] || {}) as Record<string, any>, value) : structuredClone(value);
+      (target as T)[key] = value && typeof value === 'object' && !Array.isArray(value) ? objectAssignDeep(structuredClone(target[key] || {}) as Record<string, any>, value) : structuredClone(value);
     }
   }
-  return target as T & U;
+  return target as T;
 }
 
 export { objectAssignDeep };
