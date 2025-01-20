@@ -6,3 +6,5 @@ function objectAssignDeep<T extends Record<string, any>, U>(target: T, ...source
   }
   return target as T & U;
 }
+
+export { objectAssignDeep };
