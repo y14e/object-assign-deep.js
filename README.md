@@ -4,5 +4,5 @@ JS snippet for a deep `Object.assign()`.
 ```js
 import { objectAssignDeep } from './object-assign-deep.js';
 
-objectAssignDeep(target, source1, source2, ..., sourceN);
+objectAssignDeep(target, source1, source2, /* ..., */ sourceN);
 ```
