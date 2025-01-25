@@ -4,7 +4,7 @@ function objectAssignDeep<T extends {}, U extends any[]>(target: T, ...sources: 
       (target as any)[key] = value && typeof value === 'object' && !Array.isArray(value) ? objectAssignDeep(structuredClone((target as any)[key] || {}), value) : structuredClone(value);
     }
   }
-  return target as T;
+  return target;
 }
 
 export { objectAssignDeep };
