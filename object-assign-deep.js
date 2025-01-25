@@ -6,4 +6,5 @@ function objectAssignDeep(target, ...sources) {
   }
   return target;
 }
+
 export { objectAssignDeep };
