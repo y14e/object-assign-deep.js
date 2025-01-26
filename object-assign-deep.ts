@@ -1,8 +1,12 @@
 function objectAssignDeep(target: {}, ...sources: any[]): any {
+  const _is = (value: any): boolean => {
+    return value !== null && typeof value === 'object' && !Array.isArray(value);
+  };
   for (const source of sources) {
-    for (const [key, value] of Object.entries(source || {})) {
-      (target as any)[key] = value && typeof value === 'object' && !Array.isArray(value) ? objectAssignDeep(structuredClone((target as any)[key] || {}), value) : structuredClone(value);
-    }
+    Object.entries(source || {}).forEach(([key, value]) => {
+      const targetValue = (target as any)[key];
+      (target as any)[key] = _is(value) ? objectAssignDeep(_is(targetValue) ? structuredClone(targetValue) : {}, value) : structuredClone(value);
+    });
   }
   return target;
 }
